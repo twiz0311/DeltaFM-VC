@@ -1,0 +1,7 @@
+title: Demo for AGRN-VC
+description: Utilizing Adaptive Global Response Normalization and Cluster based Pseudo Labels for Zero-Shot Voice Conversion
+show_downloads: false
+google_analytics:
+theme: jekyll-theme-cayman
+github:
+  is_project_page: false
