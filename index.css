@@ -42,9 +42,10 @@ h3 {
 }
 
 h4 {
-    font-size: 20px;
+    font-size: 10px;
     font-weight: 400;
-    margin: 40px 0px 10px 0px;
+    margin: 10px 0px 30px 30px;
+    color: rgb(75, 81, 93);
 }
 
 ul {
