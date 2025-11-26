@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Noise-Robust Bandwidth Expansion - Audio Samples</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="section">
+        <h1>
+            FLOW-XPR: BALANCING SPECTRAL FIDELITY AND PERCEPTUAL QUALITY 
+            IN NOISE-ROBUST BANDWIDTH EXPANSION VIA FLOW MATCHING
+        </h1>
+
+        <!-- ABSTRACT -->
+        <h2>Abstract</h2>
+        <p class="abstract">
+            Noise-robust bandwidth expansion must restore the missing high-frequency components of speech 
+            while reducing noise. Existing methods suffer from a persistent trade-off between spectral fidelity 
+            (reducing spectral distortion) and perceptual quality. To address this, we propose FLOW-XPR, 
+            a flow matching model conditioned on XEUS and PatchReplace, designed to achieve balanced 
+            improvements in both aspects. Our approach leverages conditional flow matching for high-frequency 
+            restoration. It is conditioned on noise-robust self-supervised features (XEUS), which provide 
+            semantic guidance to better distinguish speech from noise. We also newly introduce PatchReplace, 
+            a simple yet effective augmentation strategy. It replaces corrupted spectrogram regions with clean 
+            counterparts, reducing the information loss of conventional masking and the temporal inconsistency 
+            of mixing between samples. This encourages the model to learn more robust speech patterns. 
+            Experimental results show that FLOW-XPR outperforms baselines in terms of both spectral fidelity 
+            and perceptual quality. Audio samples are available.
+        </p>
+
+        <!-- INTRO TEXT -->
+        <p class="subtitle">This work has been submitted to ICASSP 2026 for review.</p>
+
+        <!-- MODEL FIGURE -->
+        <div style="text-align:center; margin:20px 0;">
+            <img src="proposed_model.jpg" alt="Model Structure" class="model-figure">
+            <p class="figure-caption">Figure 1. Overview of the proposed system</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="section-1" class="section">
+        <h2>Audio Samples (Valentini-Botinhao dataset)</h2>
+        <p class="subtitle">Comparison of <b>Noisy input</b>, <b>Proposed method</b>, and <b>Clean ground truth</b>.</p>
+
+
+        <table style="width:100%; border-collapse:collapse; text-align:center;">
+            <thead>
+                <tr>
+                    <th style="padding:8px; border-bottom:1px solid #ddd;">Sample</th>
+                    <th style="padding:8px; border-bottom:1px solid #ddd;">Noisy</th>
+                    <th style="padding:8px; border-bottom:1px solid #ddd;">Proposed</th>
+                    <th style="padding:8px; border-bottom:1px solid #ddd;">Clean</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Speaker p232 -->
+                <tr style="background-color:#f2f2f2;">
+                    <td colspan="4" style="text-align:left; font-weight:bold; padding:8px;">Speaker p232</td>
+                </tr>
+                <tr>
+                    <td>Sample 1</td>
+                    <td><audio controls><source src="samples/wav/16khz_noisy/p232_091.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_proposed/p232_091.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_clean/p232_091.wav" type="audio/wav"></audio></td>
+                </tr>
+                <tr>
+                    <td>Sample 2</td>
+                    <td><audio controls><source src="samples/wav/16khz_noisy/p232_043.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_proposed/p232_043.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_clean/p232_043.wav" type="audio/wav"></audio></td>
+                </tr>
+
+                <!-- Speaker p257 -->
+                <tr style="background-color:#f2f2f2;">
+                    <td colspan="4" style="text-align:left; font-weight:bold; padding:8px;">Speaker p257</td>
+                </tr>
+                <tr>
+                    <td>Sample 3</td>
+                    <td><audio controls><source src="samples/wav/16khz_noisy/p257_030.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_proposed/p257_030.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_clean/p257_030.wav" type="audio/wav"></audio></td>
+                </tr>
+                <tr>
+                    <td>Sample 4</td>
+                    <td><audio controls><source src="samples/wav/16khz_noisy/p257_082.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_proposed/p257_082.wav" type="audio/wav"></audio></td>
+                    <td><audio controls><source src="samples/wav/16khz_clean/p257_082.wav" type="audio/wav"></audio></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>References</h2>
+        <p>[1] C. Valentini-Botinhao et al., "Noisy speech database for training speech enhancement algorithms and TTS models," 2017.</p>
+    </div>
+
+</body>
+</html>
+
+
