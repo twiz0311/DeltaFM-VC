@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Noise-Robust Bandwidth Expansion - Audio Samples</title>
+    <title>Demo for DeltaFM-VC</title>
 
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
@@ -13,100 +13,229 @@
 </head>
 
 <body>
-    <div class="section">
-        <h1>
-            FLOW-XPR: BALANCING SPECTRAL FIDELITY AND PERCEPTUAL QUALITY 
-            IN NOISE-ROBUST BANDWIDTH EXPANSION VIA FLOW MATCHING
-        </h1>
+{{ content }}
+        <div>
+            <a name="Abstract"><h2>Abstract</h2></a>
+            <hr>
+            <td>Recently, research on zero-shot voice conversion (VC) based on diffusion model has been actively conducted, enabling the generation of high-quality speech. However, their reliance on multi-step denoising process results in slow inference. For real-world applications, a system capable of generating high-quality speech with a small number of steps is required. To simultaneously achieve efficiency and quality improvement, we propose a novel zero-shot voice conversion framework, DeltaFM-VC, which leverages a contrastive flow-matching based system conditioning token-level speaker embeddings. By incorporating contrastive regularization into conditional flow matching, the model generates well-separated flow trajectories, enabling high-quality speech synthesis with a small number of steps. In addition, conditioning token-level speaker embeddings helps the model adapt speaker information while suppressing unnecessary content leakage from the target speaker. These approaches work together to improve the overall quality of converted speech. Our results demonstrate that the proposed model outperforms existing approaches across multiple metrics, including naturalness, intelligibility, and speaker similarity.</td>
+            <hr>
+        <div>
+            <h2 class="margin-head">Unseen Scenario</h2>
+        <div>
+            <a name="F2F"><h2>F2F</h2></a>
+            <hr>
+            <table>
+              <tbody>
+              <tr>
+                <td></td>
+                <td>Source</td>
+                <td>Target</td>
+                <!-- <td>AGAIN-VC</td> -->
+                <td>VQMIVC</td>
+                <td>TriAAN-VC</td>
+                <td>AGRN-VC</td>
+              </tr>
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 1</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p330_070_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p249_217_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p330_070_p249_217_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p330_070_p249_217_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p330_070_p249_217_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p330_070_p249_217_cnv_gen.wav"></audio></td>
+              </tr>
+              <tr>
+                <td colspan='6'>Text: I let go the telephone and ran.</td>
+              </tr>
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 2</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p282_361_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p249_300_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p282_361_p249_300_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p282_361_p249_300_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p282_361_p249_300_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p282_361_p249_300_cnv_gen.wav"></audio></td>
+              </tr>
+              <tr>
+                <td colspan='6'>Text: Anything is possible in football and we can beat Celtic again.</td>
+              </tr>
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 3</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p330_166_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p277_434_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p330_166_p277_434_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p330_166_p277_434_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p330_166_p277_434_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p330_166_p277_434_cnv_gen.wav"></audio></td>
+              </tr>                 
+              <tr>
+                <td colspan='6'>Text: It was horrible, but there is still more.</td>
+              </tr>                  
+              </tbody>
+            </table>
+      </div>
 
-        <!-- ABSTRACT -->
-        <h2>Abstract</h2>
-        <p class="abstract">
-            Noise-robust bandwidth expansion must restore the missing high-frequency components of speech 
-            while reducing noise. Existing methods suffer from a persistent trade-off between spectral fidelity 
-            (reducing spectral distortion) and perceptual quality. To address this, we propose FLOW-XPR, 
-            a flow matching model conditioned on XEUS and PatchReplace, designed to achieve balanced 
-            improvements in both aspects. Our approach leverages conditional flow matching for high-frequency 
-            restoration. It is conditioned on noise-robust self-supervised features (XEUS), which provide 
-            semantic guidance to better distinguish speech from noise. We also newly introduce PatchReplace, 
-            a simple yet effective augmentation strategy. It replaces corrupted spectrogram regions with clean 
-            counterparts, reducing the information loss of conventional masking and the temporal inconsistency 
-            of mixing between samples. This encourages the model to learn more robust speech patterns. 
-            Experimental results show that FLOW-XPR outperforms baselines in terms of both spectral fidelity 
-            and perceptual quality. Audio samples are available.
-        </p>
+      <div>
+            <a name="F2M"><h2>F2M</h2></a>
+            <hr>
+              <table>
+              <tbody>
+              <tr>
+                <td></td>
+                <td>Source</td>
+                <td>Target</td>
+                <!-- <td>AGAIN-VC</td> -->
+                <td>VQMIVC</td>
+                <td>TriAAN-VC</td>
+                <td>AGRN-VC</td>
+              </tr>
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 1</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p277_034_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p376_405_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p277_034_p376_405_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p277_034_p376_405_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p277_034_p376_405_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p277_034_p376_405_cnv_gen.wav"></audio></td>
+              </tr>              
+              <tr>
+                <td colspan='6'>Text: We must provide a long-term solution to tackle this attitude.</td>
+              </tr>    
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 2</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p282_010_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p271_220_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p282_010_p271_220_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p282_010_p271_220_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p282_010_p271_220_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p282_010_p271_220_cnv_gen.wav"></audio></td>
+              </tr>              
+              <tr>
+                <td colspan='6'>Text: People look, but no one ever finds it.</td>
+              </tr>    
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 3</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p249_089_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p245_158_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p249_089_p245_158_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p249_089_p245_158_cnv_gen.wav""></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p249_089_p245_158_cnv_gen.wav""></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p249_089_p245_158_cnv_gen.wav""></audio></td>
+              </tr>                
+              <tr>
+                <td colspan='6'>Text: He seems to be pleased with the picture.</td>
+              </tr>      
+              </tbody>
+              </table>
+      </div>
 
-        <!-- INTRO TEXT -->
-        <p class="subtitle">This work has been submitted to ICASSP 2026 for review.</p>
+      <div>
+            <a name="M2F"><h2>M2F</h2></a>
+            <hr>
+              <table>
+              <tbody>
+              <tr>
+                <td></td>
+                <td>Source</td>
+                <td>Target</td>
+                <!-- <td>AGAIN-VC</td> -->
+                <td>VQMIVC</td>
+                <td>TriAAN-VC</td>
+                <td>AGRN-VC</td>
+              </tr>
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 1</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p285_369_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p277_003_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p285_369_p277_003_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p285_369_p277_003_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p285_369_p277_003_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p285_369_p277_003_cnv_gen.wav"></audio></td>
+              </tr>
+              <tr>
+                <td colspan='6'>Text: By that time, however, it was already too late.</td>
+              </tr>    
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 2</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p376_123_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p277_073_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p376_123_p277_073_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p376_123_p277_073_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p376_123_p277_073_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p376_123_p277_073_cnv_gen.wav"></audio></td>
+              </tr>              
+              <tr>
+                <td colspan='6'>Text: That has given me great confidence.</td>
+              </tr>    
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 3</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p271_245_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p277_437_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p271_245_p277_437_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p271_245_p277_437_cnv_gen.wav""></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p271_245_p277_437_cnv_gen.wav""></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p271_245_p277_437_cnv_gen.wav""></audio></td>
+              </tr>                 
+              <tr>
+                <td colspan='6'>Text: It would still have been a good film, but very different.</td>
+              </tr>    
+              </tbody>
+              </table>
+      </div>
 
-        <!-- MODEL FIGURE -->
-        <div style="text-align:center; margin:20px 0;">
-            <img src="proposed_model.jpg" alt="Model Structure" class="model-figure">
-            <p class="figure-caption">Figure 1. Overview of the proposed system</p>
-        </div>
-    </div>
-
-    <hr>
-
-    <div id="section-1" class="section">
-        <h2>Audio Samples (Valentini-Botinhao dataset)</h2>
-        <p class="subtitle">Comparison of <b>Noisy input</b>, <b>Proposed method</b>, and <b>Clean ground truth</b>.</p>
-
-
-        <table style="width:100%; border-collapse:collapse; text-align:center;">
-            <thead>
-                <tr>
-                    <th style="padding:8px; border-bottom:1px solid #ddd;">Sample</th>
-                    <th style="padding:8px; border-bottom:1px solid #ddd;">Noisy</th>
-                    <th style="padding:8px; border-bottom:1px solid #ddd;">Proposed</th>
-                    <th style="padding:8px; border-bottom:1px solid #ddd;">Clean</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Speaker p232 -->
-                <tr style="background-color:#f2f2f2;">
-                    <td colspan="4" style="text-align:left; font-weight:bold; padding:8px;">Speaker p232</td>
-                </tr>
-                <tr>
-                    <td>Sample 1</td>
-                    <td><audio controls><source src="samples/wav/16khz_noisy/p232_091.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_proposed/p232_091.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_clean/p232_091.wav" type="audio/wav"></audio></td>
-                </tr>
-                <tr>
-                    <td>Sample 2</td>
-                    <td><audio controls><source src="samples/wav/16khz_noisy/p232_043.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_proposed/p232_043.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_clean/p232_043.wav" type="audio/wav"></audio></td>
-                </tr>
-
-                <!-- Speaker p257 -->
-                <tr style="background-color:#f2f2f2;">
-                    <td colspan="4" style="text-align:left; font-weight:bold; padding:8px;">Speaker p257</td>
-                </tr>
-                <tr>
-                    <td>Sample 3</td>
-                    <td><audio controls><source src="samples/wav/16khz_noisy/p257_030.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_proposed/p257_030.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_clean/p257_030.wav" type="audio/wav"></audio></td>
-                </tr>
-                <tr>
-                    <td>Sample 4</td>
-                    <td><audio controls><source src="samples/wav/16khz_noisy/p257_082.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_proposed/p257_082.wav" type="audio/wav"></audio></td>
-                    <td><audio controls><source src="samples/wav/16khz_clean/p257_082.wav" type="audio/wav"></audio></td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
-
-    <hr>
-
-    <div class="section">
-        <h2>References</h2>
-        <p>[1] C. Valentini-Botinhao et al., "Noisy speech database for training speech enhancement algorithms and TTS models," 2017.</p>
-    </div>
+      <div>
+            <a name="M2M"><h2>M2M</h2></a>
+            <hr>
+              <table>
+              <tbody>
+              <tr>
+                <td></td>
+                <td>Source</td>
+                <td>Target</td>
+                <!-- <td>AGAIN-VC</td>-->
+                <td>VQMIVC</td>
+                <td>TriAAN-VC</td>
+                <td>AGRN-VC</td>
+              </tr>
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 1</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p376_350_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p245_029_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p376_350_p245_029_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p376_350_p245_029_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p376_350_p245_029_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p376_350_p245_029_cnv_gen.wav"></audio></td>
+              </tr>             
+              <tr>
+                <td colspan='6'>Text: That's what it's all about, isn't it?</td>
+              </tr>    
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 2</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p376_370_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p245_107_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p376_370_p245_107_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p376_370_p245_107_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p376_370_p245_107_cnv_gen.wav"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p376_370_p245_107_cnv_gen.wav"></audio></td>
+              </tr>              
+              <tr>
+                <td colspan='6'>Text: It cannot go on for ever like this.</td>
+              </tr>    
+              <tr>
+                <td nowrap width="160" rowspan='2'>sample 3</td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Source/p271_269_mic1.flac"></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/Target/p285_053_mic1.flac"></audio></td>
+                <!-- <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGAIN/p271_269_p285_053_cnv_gen.wav"></audio></td> -->
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/VQMIVC/p271_269_p285_053_cnv_gen.wav""></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/TriAAN/p271_269_p285_053_cnv_gen.wav""></audio></td>
+                <td><audio controls="" preload="none" style="width: 160px;"><source src="Speech/AGRN/p271_269_p285_053_cnv_gen.wav""></audio></td>
+              </tr>                 
+              <tr>
+                <td colspan='6'>Text: That review will look at management across the sector as a whole.</td>
+              </tr>    
+              </tbody>
+              </table>
+      </div>
 
 </body>
 </html>
