@@ -225,6 +225,7 @@ p {
 table {
     width: 60%;
     border-collapse: collapse;
+    margin: 0px 300px 0px 300px;
 }
 
 th, td {
